@@ -1,0 +1,5 @@
+tom/1996/7/21/seoul
+sam/1994/1/20/busan
+bob/2000/12/11/seoul
+kim/2002/6/8/daejeon
+lee/1998/2/10/busan

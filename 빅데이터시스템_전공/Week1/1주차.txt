@@ -1,0 +1,115 @@
+주요 강의 내용
+빅데이터 시스템 개요
+- Python review
+- Numpy
+- Pandas
+- Pyspark
+  개념
+  Transformation operations
+  RDD
+  Spark dataframe
+  Datalake
+  Sparksql
+- Ontology
+ Pyspark 기반 ontology 추론 방식
+
+2000년 초반 : RAM값 비쌈 => Disk로 저장
+2010년 대 : RAM값 내려감 => Memory(RAM)에 저장
+
+2003년 구글에서 대용량 데이터처리를 위해 Google File System 논문으로 발표, MapReduce 발표
+
+Doug Cutting의 Nutch search 프로젝트 진행
+Open Project실행, Yahoo에서 많이 지원 => Hadoop Openproject가 됨
+
+Spark System : 2011년 Berkeley AMPLab에서 Matei Zaharia가 Distributed In-memory system을 기반으로 Spark 시스템 프로젝트 시작
+요즘은 Distributed 시스템이면 Spark를 사용한다.
+
+Hadoop(~2005) : Distributed Disk 시스템 (File을 share하는 시스템)
+Spark(~2012) : Distributed Memory (File뿐 아니라 Memory 까지 share하는 시스템)
+
+* Hadoop
+- 대용량 데이터를 처리하는 데 있어 필요한 프레임워크
+HDFS : Hadoop Distributed File System (클러스터 데이터를 저장)
+MapReduce : offline computing engine (클러스터의 데이터를 처리)
+
+- Yahoo가 지원을 많이 하였음
+
+- 이점
+Scalable :  페타바이타 단위의 연산과 저장이 가능
+Economical : 수천대 수만대의 컴퓨터로 이루어진 클러스터에 데이터와 연산들을 분산하여 처리
+Efficient : 데이터 분산처리로 인해, 데이터가 위치한 곳이 여러 노드에 병렬적으로 놓임
+Reliable :  자동적으로 여러개의 데이터 카피본을 유지하고, fault tolerance에 의존하여 컴퓨팅처리를 한다.
+
+* Spark
+RDD(Resilent Distributed Dataset) : Spark 내에서의 core data structure(주요 데이터 구조)
+여러 분산 노드에 걸쳐서 저장되는 변경이 불가능한 데이터(객체)의 집합.
+각각의 RDD는 여러개의 파티션으로 분리가 되며, 이 분리작업의 경우 컴퓨터가 알아서 처리한다. 
+=> 쉽게 말해서, 스파크 내에 저장된 데이터를 RDD라고 하며 내용변경이 불가(immutable)하다.
+Immutable한 이유 : Fault tolerance를 위함
+
+Lazy Evaulation
+Command가 주어졌을때의 Evaulation
+Action Command가 있을때 RDD들이 계산이 된다.
+
+* 기억 할 것 *
+- 대용량 file을 읽으면 여러개의 RDD로 나눔. 여러개의 RDD를 여러 노드에 분산 => Distributed
+- RDD들은 Immutable 한다. (한번 만들어진 데이터는 변경, 수정 불가) => Immutable
+- Lazy Evaulation => Lazy
+
+Hadoop이나 Spark 사용시 좋은점
+1) 실제로 데이터를 분산처리할때 사용자가 일일이 데이터 위치와 데이터에 대한 것을 신경쓸 필요 없음
+2) 분산된 메모리에서 Fault가 생겼을때 시스템에서 알아서 update를 해준다.
+
+Spark를 사용한다 => Memory를 Share하기 때문에 고성능 고가의 컴퓨터를 공유하여 쓴다.
+요즘은 단순 PC를 구입하는 방법 이외에도, AWS같은 클라우드 시스템, Databrick 시스템도 사용
+
+Fault Tolerant : 분산된 컴퓨터에 고장난 경우 이르 자동복구할수 있는 방안
+
+Hadoop의 경우 => 여러개의 카피본을 만든다 (default 3개의 카피본을 만든다)
+Spark의 경우 => lineage
+
+Spark language
+Python VS Scala(Java Hacker들이 Java의 여러문제를 해결하기위해 만든 언어, Spark는 초기에는 Scala언어를 많이 사용)
+Python을 쓰는 이유 : 구글이 사용하기때문에
+
+Apache Spark Core API (R, SQL, Python, Scala, Java)
+Spark SQL : sql언어를 써서 얼마나 optimeize 한가?
+Spark Streaming : 스트리밍 데이터 처리
+MLlib : Machine Learning을 Spark에서 쓰기위한 library
+GraphX : 그래프 그리기
+SparkR : R on spark
+
+groupBy는 pandas에서 시작한 function이며, pandas에서 많이 지원한다
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+map = ex) list[x,y,z] => [f(x), f(y), f(z)] modified list / 대용량 데이터에 같은 function을 적용
+filter = 조건을 걸어서, 조건에 부합하는 경우만 골라냄 ex) list[x,y,z] => [x,y]
+reduce = mapping된 정보들을 간략하게 간추림 ex) (map, [1,1,1,1,1] ) => (map, 5) 
+groupBy (주로 Key-Value 형태일때 많이 쓰인다)
+
+* Lambda Function : 
+1) small anonymous function, 그 순간만 쓰고 사라지는 일회용 함수, 한번 쓰고 사라지므로 메모리에 남지 않는다.
+2) argument를 여러 개 가질 수도 있음
+
+* map Function :
+Syntax : r = map(func, seq)
+
+첫째 argu : func
+둘째 argu : sequence(sequence는 여러개 가질 수 있음), seq에는 list, tuple, set과 같은 데이터 뿐 아니라 func도 들어갈 수 있다.
+
+ex)
+a= [1,2,3,4]
+b= [17,12,11,10]
+D = list(map(lambda x, y : x+y , a, b))
+print(D) # [18,14,14,14]
+
+Python3에서는 map function을 작동하면 iterator(즉, object 자체)가 return 된다
+
+* Filter Function : 
+각 element에 function을 적용해서, true인 것만을 걸러낸다.
+Syntax : filter(function, iterable)
+
+
+
+

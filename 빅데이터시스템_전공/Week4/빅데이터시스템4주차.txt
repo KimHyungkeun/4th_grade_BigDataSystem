@@ -1,0 +1,17 @@
+Pandas
+
+* Pandas 
+Pandas is a tool for data processing which helps in data analysis
+It provides functions and methods to efficiently manipulate large datasets
+
+* Data structures in Pandas :
+- Series (1차원 array)
+- DataFrame(2차원 array)  
+
+Row Index (dataframe index)
+Column Index (dataframe columns)
+
+
+
+
+

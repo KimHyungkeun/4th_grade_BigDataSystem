@@ -1,0 +1,40 @@
+Spark
+- 기능이 다양함
+- 언어 지원 : 주로 Scala 사용. (Scala는 Java보다 빠르고 Optimize가 용이함. byte code로 translate가 잘됨) Python, Java, R 기반도 있음
+- low-level에서 high-level까지 모두 프로그램이 가능
+- 중간 레벨인 dataframe 다루는것 가능 (pandas 등)
+- SQL도 가능
+- Data lake
+- 이번 학기는 python을 이용한 pyspark 사용
+
+프로그래밍 방법 (이건 개인취향)
+- Jupyter notebook
+- Databrick community edition
+
+Fault tolerance in distributed framework (분산처리 프레임워크 내의 fault tolerance)
+* Hadoop
+- 2006년 
+- Google의 GFS(Google file system) 및 map reduce
+- Apache 프로젝트
+- Distributed File System
+(당시에는 메모리가 비쌌기때문에 디스크를 주로 많이 사용, 여러 컴퓨터를 두어서 분산저장함. 저성능 PC의 디스크 공유)
+
+* Spark
+- 2012년
+- Berkeley AMP Lab
+- Apache 프로젝트
+- Distributed in memory system(메모리 내에서의 분산처리)
+(메모리를 공유하는 프레임워크, PC의 성능이 높아야함)
+
+Fault tolerance in Spark
+- Lineage : a dependency graph for all paritions of all RDDs involved in a computation up to the data source
+
+HDFS 
+- 기본 128MB 블록단위로 파일을 분산 저장하며, 블록은 각기 3개씩 복제됨.
+- Namenode는 metadata를 저장. (즉, 블록의 저장 위치등을 모두 담고있는 log나 기록을 가짐)
+
+MapReduce
+- Map, Reduce 단계일때 Distributed Disk에서 R/W 한다
+
+----------------------------------------------------------------------------------------------------------------------------------------
+sc= SparkContext.getOrCreate() # 스파크 context를 먼저 만든다

@@ -1,0 +1,30 @@
+Man,subClassOf,Person
+Woman,subClassOf,Person
+Boy,subClassOf,Man
+Son,subClassOf,Child
+Child,subClassOf,Person
+Person,subClassOf,Animal
+Daughter,subClassOf,Child
+Girl,subClassOf,Woman
+Van,subClassOf,MotorVehicle
+Truck,subClassOf,MotorVehicle
+andew,hasFather,benjamin
+colin,hasFather,danial
+tom,hasFather,bob
+bob,hasFather,tim
+sam,hasFather,jack
+jun,hasFather,jacob
+harry,hasFather,James
+kevin,hasFather,justin
+lucas,hasFather,leo
+noah,hasFather,covy
+evan,hasFriend,eric
+tim,hasChild,mary
+kim,nationality,korea
+james,spouse,emily
+kim,bornIn,seoul
+tom,workPlace,google
+seoul,locatedIn,korea
+grace,hasParent,frank
+son heung min,playFor,tottenham
+john lennon,memberOf,the beatles

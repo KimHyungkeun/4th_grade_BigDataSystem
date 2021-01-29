@@ -1,0 +1,5 @@
+Apache Spark Examples
+These examples give a quick overview of the Spark API.
+This is Spark time Learn Spark
+This is a word count example
+that is another test
